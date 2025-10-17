@@ -1,9 +1,9 @@
 Package: disserwork
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Package for adaptation dissertation work
+Version: 1.1.4
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Andrey", "Povaliy", , "first.last@example.com", role = c("aut", "cre"))
+Description: This package is designed to automate work with thesis material. The package has different functionalities.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
