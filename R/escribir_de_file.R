@@ -6,6 +6,7 @@
 #'
 #' @return Append text from file to target file
 #' @export
+#' @importFrom utils read.table
 #'
 
 

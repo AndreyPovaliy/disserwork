@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' add_lec_protocol_frame("./lec_protocol.qmd")
+#' add_lec_protocol_frame("./inst/extdata/lec_protocol.qmd")
 
 add_lec_protocol_frame <- function(file_name){
   frame = "

@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' add_tesis_frame("./tesis.qmd")
+#' add_tesis_frame("./inst/extdata/tesis.qmd")
 
 add_tesis_frame <- function(file_name){
   frame = "
