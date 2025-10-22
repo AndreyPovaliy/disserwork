@@ -11,13 +11,10 @@
 
 
 
-escribir_de_file <- function (way_to_text,to_file){
-  rT <- read.table(way_to_text,sep = "_")
-  for (i in 1:nrow(rT)) {
-    escribir(paste(rT$V1[i],
-                   "\n\n"),
-             to_file
-             )
+escribir_de_file <- function(way_to_text, to_file) {
+  answer <- read.table(way_to_text, sep = "_")
+  for (i in 1:nrow(answer)) {
+    escribir(paste(answer$V1[i], "\n\n"), to_file)
 
   }
 }
