@@ -40,7 +40,7 @@ create_table_fact <- function(df, dev, transl) {
         name = colnames(df)[i],
         n = dplyr::n(),
         pr = paste0(round(n/nrow(df),2)*100,"%"),
-        pvl = pvl
+        pvl = round(pvl,2)
       ) %>% 
       dplyr::relocate(name,.before = 1)
     colnames(table_prt_2) <- c("name","group","count","n", "pr","pvl")
