@@ -9,12 +9,12 @@
 #' @export
 #'
 #' @examples
-#' df <- tibble(
-#' a = as.factor("D","F","F","D"),
-#' b = as.factor("male","female","female","male"),
-#' c = as.factor("blond","redhead","blomd","brunet"))
-#' dev <- df$a
-#' transl <- с("group","gender","head color")
+#' df <- dplyr::tibble(
+#' a = as.factor(c("D","F","F","D")),
+#' b = as.factor(c("male","female","female","male")),
+#' c = as.factor(c("blond","redhead","blomd","brunet")))
+#' dev <- "a"
+#' transl <- c("group","gender","head color")
 #' create_table_fact(df, dev, transl)
 
 
@@ -40,7 +40,7 @@ create_table_fact <- function(df, dev, transl) {
         name = colnames(df)[i],
         n = dplyr::n(),
         pr = paste0(round(n/nrow(df),2)*100,"%"),
-        pvl = round(pvl,2)
+        pvl = round(pvl,3)
       ) %>% 
       dplyr::relocate(name,.before = 1)
     colnames(table_prt_2) <- c("name","group","count","n", "pr","pvl")

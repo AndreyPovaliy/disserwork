@@ -6,9 +6,6 @@
 #' @return Append article frame to file. Mostly for .qmd files
 #' @export
 #'
-#' @examples
-#' file_name <- "inst/extdata/article.qmd"
-#' add_article_frame(file_name)
 
 add_article_frame <- function(file_name){
   frame = "## Аннотация

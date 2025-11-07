@@ -15,8 +15,3 @@ Create .qmd files to disser
 \description{
 Create disser frame by heading
 }
-\examples{
-folder <- "./inst/extdata/"
-file_name <- "./inst/extdata/plan.json"
-create_disser_frame(folder,file_name)
-}

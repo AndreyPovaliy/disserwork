@@ -6,8 +6,6 @@
 #' @return Append tesis frame to file. Mostly for .qmd files
 #' @export
 #'
-#' @examples
-#' add_tesis_frame("./inst/extdata/tesis.qmd")
 
 add_tesis_frame <- function(file_name){
   frame = "

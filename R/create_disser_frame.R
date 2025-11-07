@@ -5,10 +5,6 @@
 #'
 #' @return Create .qmd files to disser
 #' @export
-#' @examples
-#' folder <- "./inst/extdata/"
-#' file_name <- "./inst/extdata/plan.json"
-#' create_disser_frame(folder,file_name)
 
 
 

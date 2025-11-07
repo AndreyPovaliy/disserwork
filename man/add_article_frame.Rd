@@ -15,7 +15,3 @@ Append article frame to file. Mostly for .qmd files
 \description{
 Append article frame to file
 }
-\examples{
-file_name <- "inst/extdata/article.qmd"
-add_article_frame(file_name)
-}

@@ -15,6 +15,3 @@ Append lec_protocol frame to file. Mostly for .qmd files
 \description{
 Append lec_protocol frame to file
 }
-\examples{
-add_lec_protocol_frame("./inst/extdata/lec_protocol.qmd")
-}

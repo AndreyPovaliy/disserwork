@@ -6,8 +6,6 @@
 #' @return Append sc_protocol frame to file. Mostly for .qmd files
 #' @export
 #'
-#' @examples
-#' add_sc_protocol_frame("./inst/extdata/sc_protocol.qmd")
 
 add_sc_protocol_frame <- function(file_name){
   frame = "

@@ -6,8 +6,6 @@
 #' @return Append lec_protocol frame to file. Mostly for .qmd files
 #' @export
 #'
-#' @examples
-#' add_lec_protocol_frame("./inst/extdata/lec_protocol.qmd")
 
 add_lec_protocol_frame <- function(file_name){
   frame = "

@@ -6,9 +6,6 @@
 #' @return Create json for create_disser_frame
 #' @export
 #'
-#' @examples
-#' folder <- "./inst/extdata/"
-#' create_disser_str(folder)
 
 create_disser_str <- function(folder){
   frame = "

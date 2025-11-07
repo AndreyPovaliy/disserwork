@@ -15,6 +15,3 @@ Append sc_protocol frame to file. Mostly for .qmd files
 \description{
 Append sc_protocol frame to file
 }
-\examples{
-add_sc_protocol_frame("./inst/extdata/sc_protocol.qmd")
-}

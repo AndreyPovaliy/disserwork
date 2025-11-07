@@ -15,6 +15,3 @@ Append tesis frame to file. Mostly for .qmd files
 \description{
 Append tesis frame to file
 }
-\examples{
-add_tesis_frame("./inst/extdata/tesis.qmd")
-}

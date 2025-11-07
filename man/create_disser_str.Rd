@@ -15,7 +15,3 @@ Create json for create_disser_frame
 \description{
 Create config file
 }
-\examples{
-folder <- "./inst/extdata/"
-create_disser_str(folder)
-}
