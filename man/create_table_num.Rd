@@ -4,7 +4,7 @@
 \alias{create_table_num}
 \title{Create df with numeric measures}
 \usage{
-create_table_num(df, dev, transl)
+create_table_num(df, dev, transl, selector)
 }
 \arguments{
 \item{df}{Exploring dataframe}
