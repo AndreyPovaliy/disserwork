@@ -108,6 +108,23 @@ write.csv(table_n_4 ,file = \"/calc/result/tbl/table_n_4.csv\",row.names = F)", 
   } else {
     print(paste("File already exists:", paste0(path_folder,"/calc/processing/get_text.R")))
   }
+
+    cat("source(\"./calc/processing/get_tables.R\")
+
+text_3 <- read.csv(\"./calc/result/tbl/table_n_3.csv\")
+
+text_4 <- read.csv(\"./calc/result/tbl/table_n_4.csv\")
+
+
+df <- text_3
+filename1 <- \"./calc/result/txt/text_3.txt\"
+print_text_cat(df,filename1)
+
+
+df <- text_4
+filename1 <- \"./calc/result/txt/text_4.txt\"
+print_text_num(df,filename1)", file = paste0(path_folder,"/calc/processing/get_text.R"))
+  
   
   if (!file.exists(paste0(path_folder,"/calc/processing/get_images.R"))) {
     file.create(paste0(path_folder,"/calc/processing/get_images.R"))
