@@ -133,6 +133,18 @@ print_text_num(df,filename1)", file = paste0(path_folder,"/calc/processing/get_t
     print(paste("File already exists:", paste0(path_folder,"/calc/processing/get_images.R")))
   }
   
+      cat("library(ggpubr)
+library(ggplot2)
+# fig_1
+# fig_2
+img <- ggarrange(fig_1, fig_2, fig_3, fig_4, fig_5,fig_6 + rremove(\"x.text\"), 
+          labels = c('А', 'Б', 'В','Г', 'Д','Е'),
+          ncol = 3, nrow = 2)
+
+
+ggsave(img, filename = \"./calc/result/img/img_2.png\",width = 9,height = 6)
+", file = paste0(path_folder,"/calc/processing/get_images.R"))
+
   if (!dir.exists(paste0(path_folder,"/calc/result"))) {
     dir.create(paste0(path_folder,"/calc/result"))
   }
