@@ -9,4 +9,4 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Imports: 
-    dplyr,jsonlite,utils,magrittr
+    dplyr,jsonlite,utils,magrittr,bib2df,tidyverse,tidytext,ggplot2
