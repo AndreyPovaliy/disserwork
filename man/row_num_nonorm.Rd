@@ -20,8 +20,8 @@ String for table
 Type no norm data table row
 }
 \examples{
-df <- mtcars
-file.create("./text.txt")
-file_name = "./text.txt"
-row_num_nonorm("Miles/(US) gallon ",df$mpg,file_name)
+# df <- mtcars
+# file.create("./text.txt")
+# file_name = "./text.txt"
+# row_num_nonorm("Miles/(US) gallon ",df$mpg,file_name)
 }

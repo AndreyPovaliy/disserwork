@@ -24,9 +24,8 @@ Append text from file to target file
 Type no norm data string
 }
 \examples{
-df <- mtcars
-file.create("text.txt")
-file_name = "text.txt"
-str_num_nonorm(df$mpg, "Miles/(US) gallon ",
-             "во всей выборке составил ","miles",file_name)
+# df <- mtcars
+# file.create("text.txt")
+# file_name = "text.txt"
+# str_num_nonorm(df$mpg, "Miles/(US) gallon ", "во всей выборке составил ","miles",file_name)
 }

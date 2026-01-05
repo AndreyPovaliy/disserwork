@@ -20,7 +20,7 @@ Print categoric data data to string
 Type categoric data data to string
 }
 \examples{
-parametr = "Engine is "
-file_name <- "text.txt"
-quantity_discr(parametr = parametr, vector = as.factor(mtcars$vs),file_name)
+# parametr = "Engine is "
+# file_name <- "text.txt"
+# quantity_discr(parametr = parametr, vector = as.factor(mtcars$vs),file_name)
 }

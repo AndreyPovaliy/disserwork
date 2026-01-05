@@ -9,13 +9,13 @@
 #' @export
 #'
 #' @examples
-#' df <- dplyr::tibble(
-#' a = as.factor(c("D","F","F","D")),
-#' b = c(1:4),
-#' c = c(5:8)
-#' dev <- "a"
-#' transl <- с("group","gender","head color")
-#' create_table_num(df, dev, transl)
+#' # df <- dplyr::tibble(
+#' # a = as.factor(c("D","F","F","D")),
+#' # b = c(1:4),
+#' # c = c(5:8)
+#' # dev <- "a"
+#' # transl <- с("group","gender","head color")
+#' # create_table_num(df, dev, transl)
 
 
 

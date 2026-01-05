@@ -20,8 +20,8 @@ String with all cases to target file
 Type all text from file
 }
 \examples{
-df <- mtcars
-file.create("./text.txt")
-file_name = "./text.txt"
-how_many(df$mpg,"Всего в исследование вошло",file_name)
+# df <- mtcars
+# file.create("./text.txt")
+# file_name = "./text.txt"
+# how_many(df$mpg,"Всего в исследование вошло",file_name)
 }

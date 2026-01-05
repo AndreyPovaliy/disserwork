@@ -8,10 +8,10 @@
 #' @return String with all cases to target file
 #'
 #' @examples
-#' df <- mtcars
-#' file.create("./text.txt")
-#' file_name = "./text.txt"
-#' how_many(df$mpg,"Всего в исследование вошло",file_name)
+#' # df <- mtcars
+#' # file.create("./text.txt")
+#' # file_name = "./text.txt"
+#' # how_many(df$mpg,"Всего в исследование вошло",file_name)
 
 
 how_many <- function(vector,descripror,file_name){

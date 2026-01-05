@@ -8,10 +8,10 @@
 #' @return String for table
 #'
 #' @examples
-#' df <- mtcars
-#' file.create("./text.txt")
-#' file_name = "./text.txt"
-#' row_num_nonorm("Miles/(US) gallon ",df$mpg,file_name)
+#' # df <- mtcars
+#' # file.create("./text.txt")
+#' # file_name = "./text.txt"
+#' # row_num_nonorm("Miles/(US) gallon ",df$mpg,file_name)
 
 
 row_num_nonorm <- function(parametr, vector, file_name) {

@@ -10,11 +10,10 @@
 #' @return Append text from file to target file
 #'
 #' @examples
-#' df <- mtcars
-#' file.create("text.txt")
-#' file_name = "text.txt"
-#' str_num_nonorm(df$mpg, "Miles/(US) gallon ",
-#'              "во всей выборке составил ","miles",file_name)
+#' # df <- mtcars
+#' # file.create("text.txt")
+#' # file_name = "text.txt"
+#' # str_num_nonorm(df$mpg, "Miles/(US) gallon ", "во всей выборке составил ","miles",file_name)
 
 
 str_num_nonorm <- function(vector,

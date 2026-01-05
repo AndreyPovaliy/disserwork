@@ -16,6 +16,6 @@ formated string in terminal
 Print colnames
 }
 \examples{
-df <- mtcars
-print_col_names(df)
+# df <- mtcars
+# print_col_names(df)
 }

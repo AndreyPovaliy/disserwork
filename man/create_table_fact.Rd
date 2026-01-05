@@ -20,11 +20,11 @@ df with factor measures
 Create df with factor measures
 }
 \examples{
-df <- dplyr::tibble(
-a = as.factor(c("D","F","F","D")),
-b = as.factor(c("male","female","female","male")),
-c = as.factor(c("blond","redhead","blomd","brunet")))
-dev <- "a"
-transl <- c("group","gender","head color")
-create_table_fact(df, dev, transl)
+# df <- dplyr::tibble(
+# a = as.factor(c("D","F","F","D")),
+# b = as.factor(c("male","female","female","male")),
+# c = as.factor(c("blond","redhead","blomd","brunet")))
+# dev <- "a"
+# transl <- c("group","gender","head color")
+# create_table_fact(df, dev, transl)
 }

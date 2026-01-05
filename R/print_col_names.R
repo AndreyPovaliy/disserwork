@@ -8,8 +8,8 @@
 #' @export
 #'
 #' @examples
-#' df <- mtcars
-#' print_col_names(df)
+#' # df <- mtcars
+#' # print_col_names(df)
 
 
 

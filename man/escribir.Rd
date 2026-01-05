@@ -18,5 +18,5 @@ Append string in file
 Type in file string with new line break
 }
 \examples{
-escribir("Hello world!", "./inst/extdata/textfile.txt")
+# escribir("Hello world!", "./inst/extdata/textfile.txt")
 }

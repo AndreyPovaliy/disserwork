@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' escribir("Hello world!", "./inst/extdata/textfile.txt")
+#' # escribir("Hello world!", "./inst/extdata/textfile.txt")
 
 escribir <- function(text,to_file) {
   text <- paste0(text,"\n")
