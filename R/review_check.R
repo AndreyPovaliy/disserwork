@@ -11,8 +11,11 @@
 #' @importFrom magrittr %>%
 #' @importFrom utils read.csv
 #' @import tidytext
-#' @import tidyverse
-#' @import bib2df bib2df
+#' @import stringr
+#' @import tibble
+#' @import dplyr
+#' @import ggplot2
+#' @importFrom bib2df bib2df
 #'
 #' @examples
 #' # pages <- 200 # целевое значение страниц
