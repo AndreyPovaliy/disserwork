@@ -8,6 +8,7 @@
 #'
 #' @return String for table
 #' @export
+#' @importFrom dplyr %>%
 #' @importFrom utils read.csv
 #' @import tidytext
 #' @import tidyverse

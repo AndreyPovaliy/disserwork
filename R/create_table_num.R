@@ -7,6 +7,9 @@
 #'
 #' @return  df with numeric measures
 #' @export
+#' @import dplyr
+#' @import magrittr
+#' @import ggplot2
 #'
 #' @examples
 #' # df <- dplyr::tibble(
@@ -19,9 +22,9 @@
 
 
 
-create_table_num <- function(df, dev, transl, selector) {
+create_table_num <- function(df, dev, transl) {
     
-  combined_df <- dplyr::tibble(
+  combined_df <- tibble(
     name = character(),
     group_1 = character(),
     group_2 = character(),
@@ -64,7 +67,7 @@ create_table_num <- function(df, dev, transl, selector) {
     param1 <- append(param1,p_v)
     
     combined_df <- combined_df %>% 
-      tibble::add_row(name = param1[1], 
+      add_row(name = param1[1], 
               group_1 = param1[2],
               group_2 = param1[3],
               p_value = param1[4])
