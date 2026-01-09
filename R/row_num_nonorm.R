@@ -6,6 +6,7 @@
 #'
 #'
 #' @return String for table
+#' @export
 #'
 #' @examples
 #' # df <- mtcars

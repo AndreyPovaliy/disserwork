@@ -6,7 +6,8 @@
 #'
 #'
 #' @return String for table
-#'
+#' @export 
+#' 
 #' @examples
 #' # df <- mtcars
 #' # file.create("./text.txt")

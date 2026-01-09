@@ -6,6 +6,7 @@
 #'
 #'
 #' @return Print categoric data in short form data to string
+#' @export 
 #'
 #' @examples
 #' # parametr = "Engine is "

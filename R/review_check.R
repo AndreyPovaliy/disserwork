@@ -7,6 +7,11 @@
 #'
 #'
 #' @return String for table
+#' @export
+#' @importFrom utils read.table
+#' @importFrom tidytext unnest_tokens
+#' @import tidyverse
+#' @import bib2df bib2df
 #'
 #' @examples
 #' # pages <- 200 # целевое значение страниц
