@@ -8,7 +8,7 @@
 #'
 #'
 #' @return Append text from file to target file
-
+#' @export 
 #' 
 #' @examples 
 #' # df <- mtcars
