@@ -8,8 +8,8 @@
 #'
 #' @return String for table
 #' @export
-#' @importFrom utils read.table
-#' @importFrom tidytext unnest_tokens
+#' @importFrom utils read.csv
+#' @import tidytext
 #' @import tidyverse
 #' @import bib2df bib2df
 #'
