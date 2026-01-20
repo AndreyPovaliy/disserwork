@@ -35,7 +35,7 @@ create_calc_block <- function(path_folder){
 # материалы и результат
 # категориальные и численные данные
 df[sapply(df, is.character)] <- lapply(df[sapply(df, is.character)], as.factor)
-df$name <- as.character(df$name) # ожно вывести из таблицы
+df$name <- as.character(df$name) # можно вывести из таблицы
 input_metrics <- с(NAMES)
 output_metrics <- с(NAMES)
 devide <- с(NAMES)
@@ -46,20 +46,19 @@ df_in <- df[input_metrics]
 
 df_out <- df[output_metrics]
 
-df_fact_in <- df_in[sapply(df_in, is.factor)]
+df_fact_in <- cbind(df[index_dev],df_in[sapply(df_in, is.factor)])
 rus_df_fact_in <- c(RUS_NAMES)
 
-df_fact_out <- df_out[sapply(df_out, is.factor)]
+df_fact_out <- cbind(df[index_dev],df_out[sapply(df_out, is.factor)])
 rus_df_fact_out - c(RUS_NAMES)
 
 df_num_in <- cbind(df[index_dev],df_in[sapply(df_in, is.numeric)])
-rus_df_num_in <- c(RUS_NAMES)
-
-mes_df_num_in <- c(MESUEMENTS)
+rus_df_num_in <- c(RUS_NAMES) # without df[index_dev]
+mes_df_num_in <- c(MESUEMENTS) # without df[index_dev]
 
 df_num_out <- cbind(df[index_dev],df_out[sapply(df_out, is.numeric)])
-rus_df_num_out <- c(RUS_NAMES)
-mes_df_num_out <- c(MESUEMENTS)
+rus_df_num_out <- c(RUS_NAMES) # without df[index_dev]
+mes_df_num_out <- c(MESUEMENTS) # without df[index_dev]
 
 # USE! print_col_names(df)
 
@@ -80,12 +79,12 @@ mes_df_num_out <- c(MESUEMENTS)
 
 # matherials
 table_n_1 <- create_table_fact(df_fact_in,devide[1],rus_df_fact_in)
-table_n_2 <- create_table_num(df = df_num_in,dev = devide[1],transl = rus_df_num_in,mes = mes_df_num_in)
+table_n_2 <- create_table_num(df = df_num_in,dev = devide[1],transl = rus_df_num_in)
 
 
 # results
 table_n_3 <- create_table_fact(df_fact_out,devide[1],rus_df_fact_out)
-table_n_4 <- create_table_num(df_num_out,devide[1],rus_df_num_out,mes_df_num_out)
+table_n_4 <- create_table_num(df_num_out,devide[1],rus_df_num_out)
 
 # p-value
 #table_n_3_st <- subset(table_n_3, table_n_3$`p-уровень` <0.05)
