@@ -10,25 +10,25 @@
 
 
 add_helper <- function(folder_name){
-    helper <- "{folder_name}helper.R"
+    helper <- glue("{folder_name}helper.R")
     file.create(helper)
 
     cat(glue("library(tidyverse)
 library(disserwork)
 library(glue)
 
-way <- {folder_name}
+way <- glue(\"{folder_name}\")
 
 ls(\"package:disserwork\")
 # create_calc_block(way)
 
-add_article_frame(file_name = glue(\"{way}index.qmd\"))
+add_article_frame(file_name = glue(\"{{way}}index.qmd\"))
 
 
 review_check(pages = 1,
              actual_year = 2018, 
-             file_Rmd =glue(\"{way}index.qmd\") ,
-             file_bib = glue(\"{way}references.bib\")
+             file_Rmd =glue(\"{{way}}index.qmd\") ,
+             file_bib = glue(\"{{way}}references.bib\")
              )
     
     "), file =helper)
