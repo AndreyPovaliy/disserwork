@@ -10,7 +10,7 @@
 
 
 add_ama_csl <- function(folder_name){
-    csl_file <- "{folder_name}ama.csl"
+    csl_file <- glue("{folder_name}ama.csl")
     file.create(csl_file)
 
     cat("<?xml version=\"1.0\" encoding=\"utf-8\"?>
