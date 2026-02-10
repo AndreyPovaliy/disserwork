@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_helper.R
 \name{add_helper}
 \alias{add_helper}
-\title{Add file with hel srtucture}
+\title{Add file with help srtucture}
 \usage{
 add_helper(folder_name)
 }
@@ -13,5 +13,5 @@ add_helper(folder_name)
 Append file hlper.R
 }
 \description{
-Add file with hel srtucture
+Add file with help srtucture
 }

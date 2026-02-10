@@ -1,4 +1,4 @@
-#' Add file with hel srtucture
+#' Add file with help srtucture
 #'
 #' @param folder_name Way to file
 #'
@@ -11,7 +11,7 @@
 
 add_helper <- function(folder_name){
     helper <- "{folder_name}helper.R"
-    file.create(glue("helper"))
+    file.create(helper)
 
     cat(glue("library(tidyverse)
 library(disserwork)
