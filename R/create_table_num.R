@@ -60,9 +60,9 @@ create_table_num <- function(df, dev, transl) {
       
       
     }
-    if(p_v<0.05){
-      p_v <- paste0(p_v,"**")
-    }
+    # if(p_v<0.05){
+    #   p_v <- paste0(p_v,"**")
+    # }
     
     param1 <- append(param1,p_v)
     

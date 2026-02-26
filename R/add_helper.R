@@ -21,6 +21,7 @@ way <- glue(\"{folder_name}\")
 
 ls(\"package:disserwork\")
 # create_calc_block(way)
+add_ama_csl(way)
 
 add_article_frame(file_name = glue(\"{{way}}index.qmd\"))
 

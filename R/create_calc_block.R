@@ -36,9 +36,9 @@ create_calc_block <- function(path_folder){
 # категориальные и численные данные
 df[sapply(df, is.character)] <- lapply(df[sapply(df, is.character)], as.factor)
 df$name <- as.character(df$name) # можно вывести из таблицы
-input_metrics <- с(NAMES)
-output_metrics <- с(NAMES)
-devide <- с(NAMES)
+input_metrics <- c(NAMES)
+output_metrics <- c(NAMES)
+devide <- c(NAMES)
 index_dev <- c(grep(devide[1], colnames(df)))
 
 
@@ -50,7 +50,7 @@ df_fact_in <- cbind(df[index_dev],df_in[sapply(df_in, is.factor)])
 rus_df_fact_in <- c(RUS_NAMES)
 
 df_fact_out <- cbind(df[index_dev],df_out[sapply(df_out, is.factor)])
-rus_df_fact_out - c(RUS_NAMES)
+rus_df_fact_out <- c(RUS_NAMES)
 
 df_num_in <- cbind(df[index_dev],df_in[sapply(df_in, is.numeric)])
 rus_df_num_in <- c(RUS_NAMES) # without df[index_dev]
