@@ -3,6 +3,7 @@
 #' @param df Exploring dataframe
 #' @param dev Vector with devide
 #' @param transl Vector with names to final text
+#' @param normuse Boolean, for using normality or not.
 #'
 #'
 #' @return  df with numeric measures
@@ -22,7 +23,7 @@
 
 
 
-create_table_num <- function(df, dev, transl) {
+create_table_num <- function(df, dev, transl, normuse = TRUE) {
     
   combined_df <- tibble(
     name = character(),
@@ -34,35 +35,43 @@ create_table_num <- function(df, dev, transl) {
 
   for (j in 2:ncol(df)){
     param1 <- c(colnames(df[j]))
-    
-    for (i in 1:length(unique(df[[dev]]))){
-      a <- subset(df[[j]], df[[dev]] == sort(unique(df[[dev]]))[i])
-      if (shapiro.test(a)[["p.value"]] > 0.05){
+    if(normuse == TRUE){
+      for (i in 1:length(unique(df[[dev]]))){
+        a <- subset(df[[j]], df[[dev]] == sort(unique(df[[dev]]))[i])
+        if (shapiro.test(a)[["p.value"]] > 0.05){
+          param_1 <- round(mean(a,na.rm = T),2)
+          param_2 <- round(sd(a,na.rm = T),2)
+          param <- paste0(param_1," \u00B1 ",param_2)
+        }else {
+          param_1 <-  round(median(df[[j]],na.rm = T),2)
+          q_mi <- quantile(a,na.rm = T)[2]
+          q_ma <-quantile(a,na.rm = T)[4]
+          param_2 <-  paste0(" [",q_mi,";",q_ma,"]")
+          param <- paste0(param_1,param_2)
+          
+        }
+        param1 <- append(param1,param)
+      }
+    }else {
+       for (i in 1:length(unique(df[[dev]]))){
+        a <- subset(df[[j]], df[[dev]] == sort(unique(df[[dev]]))[i])
         param_1 <- round(mean(a,na.rm = T),2)
         param_2 <- round(sd(a,na.rm = T),2)
         param <- paste0(param_1," \u00B1 ",param_2)
-      }else {
-        param_1 <-  round(median(df[[j]],na.rm = T),2)
-        q_mi <- quantile(a,na.rm = T)[2]
-        q_ma <-quantile(a,na.rm = T)[4]
-        param_2 <-  paste0(" [",q_mi,";",q_ma,"]")
-        param <- paste0(param_1,param_2)
-        
-      }
-      param1 <- append(param1,param)
     }
+      
     
-    
+
     if(shapiro.test(df[[j]])[["p.value"]] > 0.05){
-      p_v <- round(t.test(df[[j]]~df[[dev]])[["p.value"]],2)
-    }else{
-      p_v <- round(wilcox.test(df[[j]]~df[[dev]])[["p.value"]],2)
-      
-      
-    }
-    # if(p_v<0.05){
-    #   p_v <- paste0(p_v,"**")
-    # }
+          p_v <- round(t.test(df[[j]]~df[[dev]])[["p.value"]],2)
+        }else{
+          p_v <- round(wilcox.test(df[[j]]~df[[dev]])[["p.value"]],2)
+          
+          
+        }
+
+    
+
     
     param1 <- append(param1,p_v)
     
