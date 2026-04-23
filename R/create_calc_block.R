@@ -60,9 +60,13 @@ df_num_out <- cbind(df[index_dev],df_out[sapply(df_out, is.numeric)])
 rus_df_num_out <- c(RUS_NAMES) # without df[index_dev]
 mes_df_num_out <- c(MESUEMENTS) # without df[index_dev]
 
-# USE! print_col_names(df)
+# USE! 
+print_col_names(df)
+print_col_names(df_fact_in)
+print_col_names(df_fact_out)
 
-  ",file = paste0(path_folder,"/calc/input/get_data.R"))
+print_col_names(df_num_in)
+print_col_names(df_num_out)",file = paste0(path_folder,"/calc/input/get_data.R"))
   
   if (!dir.exists(paste0(path_folder,"/calc/processing"))) {
     dir.create(paste0(path_folder,"/calc/processing"))
@@ -75,31 +79,49 @@ mes_df_num_out <- c(MESUEMENTS) # without df[index_dev]
   }
   
   
-  cat("source(\"./calc/input/get_data.R\")
+  cat("library(glue)
+library(jsonlite)
+
+source(glue(\"{way}/calc/input/get_data.R\"))
 
 # matherials
 table_n_1 <- create_table_fact(df_fact_in,devide[1],rus_df_fact_in)
-table_n_2 <- create_table_num(df = df_num_in,dev = devide[1],transl = rus_df_num_in)
+table_n_2 <- create_table_num(df = df_num_in,dev = devide[1],transl = rus_df_num_in,normuse = F)
 
 
 # results
 table_n_3 <- create_table_fact(df_fact_out,devide[1],rus_df_fact_out)
-table_n_4 <- create_table_num(df_num_out,devide[1],rus_df_num_out)
+table_n_4 <- create_table_num(df_num_out,devide[1],rus_df_num_out,normuse = F)
 
 # p-value
-#table_n_3_st <- subset(table_n_3, table_n_3$`p-уровень` <0.05)
-#table_n_4_st <- subset(table_n_4, table_n_4$`p-уровень` <0.05)
+table_n_3_st <- subset(table_n_3, table_n_3$`p-уровень` <0.05)
+table_n_4_st <- subset(table_n_4, table_n_4$`p-уровень` <0.05)
+
+results <- list()
+results[[\"fact_in\"]] <- table_n_1
+results[[\"num_in\"]] <- table_n_2
+results[[\"fact_out\"]] <- table_n_3
+results[[\"num_out\"]] <- table_n_4
+results[[\"fact_st\"]] <- table_n_3_st
+results[[\"num_st\"]] <- table_n_4_st
+
+results
 
 
+write_json(results, glue(\"{way}/calc/result/tbl/results.json\"), auto_unbox = TRUE, pretty = TRUE)
 
-# write tables
-write.csv(table_n_1,file = \"/calc/result/tbl/table_n_1.csv\",row.names = F)
+# # write tables
+write.csv(table_n_1,file = glue(\"{way}/calc/result/tbl/table_n_1.csv\"),row.names = F)
 
-write.csv(table_n_2,file = \"/calc/result/tbl/table_n_2.csv\",row.names = F)
+write.csv(table_n_2,file = glue(\"{way}/calc/result/tbl/table_n_2.csv\"),row.names = F)
 
-write.csv(table_n_3,file = \"/calc/result/tbl/table_n_3.csv\",row.names = F)
+write.csv(table_n_3,file = glue(\"{way}/calc/result/tbl/table_n_3.csv\"),row.names = F)
 
-write.csv(table_n_4 ,file = \"/calc/result/tbl/table_n_4.csv\",row.names = F)", file = paste0(path_folder,"/calc/processing/get_tables.R"))
+write.csv(table_n_4 ,file = glue(\"{way}/calc/result/tbl/table_n_4.csv\"),row.names = F)
+
+write.csv(table_n_3_st,file = glue(\"{way}/calc/result/tbl/table_n_3_st.csv\"),row.names = F)
+
+write.csv(table_n_4_st,file = glue(\"{way}/calc/result/tbl/table_n_4_st.csv\"),row.names = F)", file = paste0(path_folder,"/calc/processing/get_tables.R"))
   
   if (!file.exists(paste0(path_folder,"/calc/processing/get_text.R"))) {
     file.create(paste0(path_folder,"/calc/processing/get_text.R"))
@@ -108,21 +130,27 @@ write.csv(table_n_4 ,file = \"/calc/result/tbl/table_n_4.csv\",row.names = F)", 
     print(paste("File already exists:", paste0(path_folder,"/calc/processing/get_text.R")))
   }
 
-    cat("source(\"./calc/processing/get_tables.R\")
+    cat("library(glue)
+library(jsonlite)
 
-text_3 <- read.csv(\"./calc/result/tbl/table_n_3.csv\")
-
-text_4 <- read.csv(\"./calc/result/tbl/table_n_4.csv\")
-
-
-df <- text_3
-filename1 <- \"./calc/result/txt/text_3.txt\"
-print_text_cat(df,filename1)
+source(glue(\"{way}/calc/processing/get_tables.R\"))
 
 
-df <- text_4
-filename1 <- \"./calc/result/txt/text_4.txt\"
-print_text_num(df,filename1)", file = paste0(path_folder,"/calc/processing/get_text.R"))
+data_list <- read_json(glue(\"{way}/calc/result/tbl/results.json\"))
+
+text_3 <- bind_rows(data_list$fact_out)
+text_4 <- bind_rows(data_list$num_out)
+
+# text_3 <- read.csv(glue(\"{way}/calc/result/tbl/table_n_3.csv\"))
+# text_4 <- read.csv(glue(\"{way}/calc/result/tbl/table_n_4.csv\"))
+
+
+filename1 <- glue(\"{way}/calc/result/txt/text_3.txt\")
+print_text_cat(text_3,filename1)
+
+
+filename1 <- glue(\"{way}/calc/result/txt/text_4.txt\")
+print_text_num(text_4,filename1,mes = mes_df_num_out)", file = paste0(path_folder,"/calc/processing/get_text.R"))
   
   
   if (!file.exists(paste0(path_folder,"/calc/processing/get_images.R"))) {
@@ -133,15 +161,18 @@ print_text_num(df,filename1)", file = paste0(path_folder,"/calc/processing/get_t
   }
   
       cat("library(ggpubr)
+library(glue)
 library(ggplot2)
 # fig_1
 # fig_2
-img <- ggarrange(fig_1, fig_2, fig_3, fig_4, fig_5,fig_6 + rremove(\"x.text\"), 
+
+
+img <- ggarrange(fig_1, fig_2, fig_3, fig_4, fig_5,fig_6, 
           labels = c('А', 'Б', 'В','Г', 'Д','Е'),
           ncol = 3, nrow = 2)
 
 
-ggsave(img, filename = \"./calc/result/img/img_2.png\",width = 9,height = 6)
+ggsave(img, filename = glue(\"{way}/calc/result/img/img_2.png\",width = 9,height = 6))
 ", file = paste0(path_folder,"/calc/processing/get_images.R"))
 
   if (!dir.exists(paste0(path_folder,"/calc/result"))) {
