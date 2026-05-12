@@ -76,6 +76,8 @@ create_table_num <- function(df, dev, transl, normuse = TRUE) {
     
   }
   combined_df$name <- transl
+  coln_1 <- levels(df[[dev]])[1]
+  coln_2 <- levels(df[[dev]])[2]
   colnames(combined_df) <- c("Параметр","Группа А","Группа Б","p-уровень")
   return(combined_df)
 }
