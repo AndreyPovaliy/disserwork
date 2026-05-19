@@ -48,6 +48,7 @@ review_check <- function(pages,actual_year,file_Rmd,file_bib){
   
   # создание датафрейма по списку
   bib_dataframe <- bib2df(file_bib)
+  bib_dataframe$YEAR <- as.numeric(bib_dataframe$YEAR)
   bib_dataframe$is_rus <- ifelse(bib_dataframe$LANGID == "ru", 1,0)
   bib_dataframe$ACTUAL <- ifelse(bib_dataframe$YEAR >actual_year, 1,0)
   
