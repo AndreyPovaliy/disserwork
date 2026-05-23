@@ -39,7 +39,7 @@ create_table_fact <- function(df, dev, transl) {
       dplyr::summarise(
         name = colnames(df)[i],
         n = dplyr::n(),
-        pr = paste0(round(n/nrow(df),2)*100,"%"),
+        pr = paste0(round(n/nrow(df),1)*100,"%"),
         pvl = round(pvl,3)
       ) %>% 
       dplyr::relocate(name,.before = 1)
