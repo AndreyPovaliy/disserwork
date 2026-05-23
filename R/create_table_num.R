@@ -55,9 +55,9 @@ create_table_num <- function(df, dev, transl, normuse = TRUE) {
     
 
     if(shapiro.test(df[[j]])[["p.value"]] > 0.05){
-          p_v <- round(t.test(df[[j]]~df[[dev]])[["p.value"]],1)
+          p_v <- round(t.test(df[[j]]~df[[dev]])[["p.value"]],3)
         }else{
-          p_v <- round(wilcox.test(df[[j]]~df[[dev]])[["p.value"]],1)
+          p_v <- round(wilcox.test(df[[j]]~df[[dev]])[["p.value"]],3)
           
           
         }
