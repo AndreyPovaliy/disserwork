@@ -25,7 +25,7 @@ quantity_discr_short <- function(parametr,vector,file_name){
     descr <- print(paste(
                          data.frame(table(vector))[i+1,1],
                          " в ",
-                         data.frame(round(prop.table(table(vector))*100,2))[i+1,2],
+                         data.frame(round(prop.table(table(vector))*100,1))[i+1,2],
                          "% (", 
                          data.frame(table(vector))[i+1,2],
                          ")", sep=""))

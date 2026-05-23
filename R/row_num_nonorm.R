@@ -16,9 +16,9 @@
 
 
 row_num_nonorm <- function(parametr, vector, file_name) {
-  median <- round(median(vector, na.rm = TRUE),2)
+  median <- round(median(vector, na.rm = TRUE),1)
   quan <- summary(vector, na.rm = TRUE)
   answer <- paste("|:", parametr, "|:", median, "[ Q1-Q3:",
-                  round(quan[2], 2), ";", round(quan[5], 2), "] :|")
+                  round(quan[2], 1), ";", round(quan[5], 1), "] :|")
   cat(answer, file = file_name, append = TRUE)
 }

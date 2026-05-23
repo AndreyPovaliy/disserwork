@@ -19,11 +19,11 @@
 
 str_num_nonorm <- function(vector,
                            parametr, descripror, mesurement, file_name) {
-  median <- round(median(vector, na.rm = TRUE), 2)
+  median <- round(median(vector, na.rm = TRUE), 1)
   quan <- summary(vector, na.rm = TRUE)
   answer <- paste0("Медиана ", parametr, descripror, median,
-                   " [Q1-Q3: ", round(quan[2], 2), "; ",
-                   round(quan[5], 2), "] ", mesurement, ".\n")
+                   " [Q1-Q3: ", round(quan[2], 1), "; ",
+                   round(quan[5], 1), "] ", mesurement, ".\n")
 
   cat(answer, file = file_name, append = TRUE)
 }

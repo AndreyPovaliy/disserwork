@@ -39,13 +39,13 @@ create_table_num <- function(df, dev, transl, normuse = TRUE) {
     for (i in 1:length(unique(df[[dev]]))){
       a <- subset(df[[j]], df[[dev]] == sort(unique(df[[dev]]))[i])
       if (shapiro.test(a)[["p.value"]] > 0.05 | normuse == FALSE){
-        param_1 <- round(mean(a,na.rm = T),2)
-        param_2 <- round(sd(a,na.rm = T),2)
+        param_1 <- round(mean(a,na.rm = T),1)
+        param_2 <- round(sd(a,na.rm = T),1)
         param <- paste0(param_1," \u00B1 ",param_2)
       }else {
-        param_1 <-  round(median(df[[j]],na.rm = T),2)
-        q_mi <- quantile(a,na.rm = T)[2]
-        q_ma <-quantile(a,na.rm = T)[4]
+        param_1 <-  round(median(df[[j]],na.rm = T),1)
+        q_mi <- round(quantile(a,na.rm = T)[2],1)
+        q_ma <-round(quantile(a,na.rm = T)[4],1)
         param_2 <-  paste0(" [",q_mi,";",q_ma,"]")
         param <- paste0(param_1,param_2)
         
@@ -55,9 +55,9 @@ create_table_num <- function(df, dev, transl, normuse = TRUE) {
     
 
     if(shapiro.test(df[[j]])[["p.value"]] > 0.05){
-          p_v <- round(t.test(df[[j]]~df[[dev]])[["p.value"]],2)
+          p_v <- round(t.test(df[[j]]~df[[dev]])[["p.value"]],1)
         }else{
-          p_v <- round(wilcox.test(df[[j]]~df[[dev]])[["p.value"]],2)
+          p_v <- round(wilcox.test(df[[j]]~df[[dev]])[["p.value"]],1)
           
           
         }
