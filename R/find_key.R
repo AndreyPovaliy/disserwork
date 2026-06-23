@@ -2,6 +2,7 @@
 #'
 #' @param link_file Links from file
 #' @param bib_file Actual bib File
+#' @param n Number in text
 #'
 #'
 #' @return String for table
@@ -17,6 +18,7 @@
 #'  @examples
 #' # links <- "links.xlsx"
 #' # bib_lnks <- "references.bib"
+#' # n <- 34
 
 
 
