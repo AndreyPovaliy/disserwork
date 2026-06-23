@@ -4,10 +4,8 @@
 #' @param bib_file Actual bib File
 #' @param n Number in text
 #'
-#'
 #' @return String for table
 #' @export
-
 #' @import tidytext
 #' @import stringr
 #' @import tibble
@@ -15,7 +13,7 @@
 #' @import readxl
 #' @importFrom bib2df bib2df
 #' 
-#'  @examples
+#' @examples
 #' # links <- "links.xlsx"
 #' # bib_lnks <- "references.bib"
 #' # n <- 34
