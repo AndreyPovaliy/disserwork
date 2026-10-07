@@ -4,7 +4,7 @@
 \alias{create_table_num}
 \title{Create df with numeric measures}
 \usage{
-create_table_num(df, dev, transl)
+create_table_num(df, dev, transl, normuse = TRUE)
 }
 \arguments{
 \item{df}{Exploring dataframe}
@@ -12,6 +12,8 @@ create_table_num(df, dev, transl)
 \item{dev}{Vector with devide}
 
 \item{transl}{Vector with names to final text}
+
+\item{normuse}{Boolean, for using normality or not.}
 }
 \value{
 df with numeric measures

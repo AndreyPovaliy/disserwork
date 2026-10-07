@@ -39,9 +39,13 @@ create_table_fact <- function(df, dev, transl) {
       dplyr::summarise(
         name = colnames(df)[i],
         n = dplyr::n(),
-        pr = paste0(round(n/nrow(df),1)*100,"%"),
         pvl = round(pvl,3)
       ) %>% 
+      dplyr::group_by_at(index_dev) %>% 
+      dplyr::mutate(
+        pr = paste0(round(n/sum(n),1)*100,"%")
+      ) %>% 
+      dplyr::ungroup() %>% 
       dplyr::relocate(name,.before = 1)
     colnames(table_prt_2) <- c("name","group","count","n", "pr","pvl")
     combined_df <- rbind(combined_df, table_prt_2)

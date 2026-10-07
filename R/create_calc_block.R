@@ -26,19 +26,27 @@ create_calc_block <- function(path_folder){
   }
   
   cat("
+library(readxl)
 # 1) read -------------------------------------------------------------------------
 
+df <- read_excel(\"data/data_pro/data.xlsx\")
+df_names <- read_excel(\"data/data_pro/data_names.xlsx\")
+
 # 2) clear -------------------------------------------------------------------------
+drop_cols <- df_names$eng_names[df_names$cat_names == \"net\"]
+df <- df |>
+  select(-all_of(drop_cols))
+
 
 # 3) preparing -------------------------------------------------------------------------
 # разделить на таблициы 
 # материалы и результат
 # категориальные и численные данные
 df[sapply(df, is.character)] <- lapply(df[sapply(df, is.character)], as.factor)
-df$name <- as.character(df$name) # можно вывести из таблицы
-input_metrics <- c(NAMES)
-output_metrics <- c(NAMES)
-devide <- c(NAMES)
+input_metrics <- df_names$eng_names[df_names$cat_names == \"method\"]
+output_metrics <- df_names$eng_names[df_names$cat_names == \"result\"]
+devide <- df_names$eng_names[df_names$cat_names == \"dev\"]
+
 index_dev <- c(grep(devide[1], colnames(df)))
 
 
@@ -47,26 +55,18 @@ df_in <- df[input_metrics]
 df_out <- df[output_metrics]
 
 df_fact_in <- cbind(df[index_dev],df_in[sapply(df_in, is.factor)])
-rus_df_fact_in <- c(RUS_NAMES)
+rus_df_fact_in <- df_names$rus_names[df_names$cat_names == \"method\"& df_names$data_clases == \"factor\"]
 
 df_fact_out <- cbind(df[index_dev],df_out[sapply(df_out, is.factor)])
-rus_df_fact_out <- c(RUS_NAMES)
+rus_df_fact_out <- df_names$rus_names[df_names$cat_names == \"result\"& df_names$data_clases == \"factor\"]
 
 df_num_in <- cbind(df[index_dev],df_in[sapply(df_in, is.numeric)])
-rus_df_num_in <- c(RUS_NAMES) # without df[index_dev]
-mes_df_num_in <- c(MESUEMENTS) # without df[index_dev]
+rus_df_num_in <- df_names$rus_names[df_names$cat_names == \"method\"& df_names$data_clases == \"numeric\"]
+mes_df_num_in <- df_names$num_metrics[df_names$cat_names == \"method\"& df_names$data_clases == \"numeric\"]
 
 df_num_out <- cbind(df[index_dev],df_out[sapply(df_out, is.numeric)])
-rus_df_num_out <- c(RUS_NAMES) # without df[index_dev]
-mes_df_num_out <- c(MESUEMENTS) # without df[index_dev]
-
-# USE! 
-print_col_names(df)
-print_col_names(df_fact_in)
-print_col_names(df_fact_out)
-
-print_col_names(df_num_in)
-print_col_names(df_num_out)",file = paste0(path_folder,"/calc/input/get_data.R"))
+rus_df_num_out <- df_names$rus_names[df_names$cat_names == \"result\"& df_names$data_clases == \"numeric\"]
+mes_df_num_out <- df_names$num_metrics[df_names$cat_names == \"result\"& df_names$data_clases == \"numeric\"]",file = paste0(path_folder,"/calc/input/get_data.R"))
   
   if (!dir.exists(paste0(path_folder,"/calc/processing"))) {
     dir.create(paste0(path_folder,"/calc/processing"))
