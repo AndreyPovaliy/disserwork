@@ -9,7 +9,7 @@ create_table_fact(df, dev, transl)
 \arguments{
 \item{df}{Exploring dataframe}
 
-\item{dev}{Vector with devide}
+\item{dev}{Vector with devide (name of the grouping column)}
 
 \item{transl}{Vector with names to final text}
 }
@@ -21,9 +21,9 @@ Create df with factor measures
 }
 \examples{
 # df <- dplyr::tibble(
-# a = as.factor(c("D","F","F","D")),
-# b = as.factor(c("male","female","female","male")),
-# c = as.factor(c("blond","redhead","blomd","brunet")))
+#   a = as.factor(c("D","F","F","D")),
+#   b = as.factor(c("male","female","female","male")),
+#   c = as.factor(c("blond","redhead","blond","brunet")))
 # dev <- "a"
 # transl <- c("group","gender","head color")
 # create_table_fact(df, dev, transl)
