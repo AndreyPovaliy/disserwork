@@ -28,7 +28,6 @@
 #'
 #' @export
 #' @importFrom tibble tibble
-#' @importFrom dplyr filter pull
 #'
 #' @examples
 #' df <- data.frame(
@@ -36,12 +35,10 @@
 #'   value = c(1.1, 2.2, 3.3),
 #'   group = c("a", "b", "c")
 #' )
-#' res <- create_data_names(df, c("Идентификатор", "Значение", "Группа"))
+#' res <- data_names(df, c("Идентификатор", "Значение", "Группа"))
 #' res$data_names
 #' res$to_num_metrics
-
-
-create_data_names <- function(df, rus_names) {
+data_names <- function(df, rus_names) {
   stopifnot(is.data.frame(df))
   
   eng_names <- colnames(df)
@@ -49,25 +46,26 @@ create_data_names <- function(df, rus_names) {
     stop("Длина rus_names не совпадает с числом колонок df")
   }
   
-  cat_names   <- rep("dev or method or net or result", ncol(df))
+  cat_names    <- rep("dev or method or net or result", ncol(df))
   data_classes <- vapply(df, function(x) class(x)[1], character(1))
   num_flags    <- vapply(df, is.numeric, logical(1))
   num_metrics  <- rep(NA_character_, ncol(df))
   
-  data_names <- tibble::tibble(
+  dict_tbl <- tibble::tibble(
     eng_names    = eng_names,
     rus_names    = rus_names,
     cat_names    = cat_names,
     data_classes = data_classes,
-    num_metrics  = num_metrics
+    num_metrics  = num_metrics,
+    is_num       = num_flags
   )
   
-  to_num_metrics <- data_names |>
-    dplyr::filter(num_flags) |>
-    dplyr::pull(eng_names)
+  to_num_metrics <- dict_tbl$eng_names[dict_tbl$is_num]
   
   list(
-    data_names     = data_names,
+    data_names     = dict_tbl[, c("eng_names", "rus_names",
+                                  "cat_names", "data_classes",
+                                  "num_metrics")],
     to_num_metrics = to_num_metrics
   )
 }
