@@ -83,10 +83,13 @@ create_table_fact <- function(df, dev, transl) {
   for (i in seq_along(uniq_names)) {
     combined_df$name[combined_df$name == uniq_names[i]] <- transl[i]
   }
-  
+
+  combined_df <- combined_df|>
+  group_by(name)|>
+  mutate(padjs = p.adjust(pvl , method = "holm", n = length(pvl)))
   # --- финальные имена ---
   colnames(combined_df) <- c("параметр", "группа", "значения",
-                             "количество", "процент", "p-уровень")
+                             "количество", "процент", "p-уровень", "p-уровень уточненный")
   
   return(combined_df)
 }
